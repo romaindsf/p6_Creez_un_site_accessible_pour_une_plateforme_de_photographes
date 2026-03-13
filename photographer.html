@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <title>Fisheye</title>
+  </head>
+  <body>
+    <header>
+      <a href="./index.html">
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page"/>
+      </a>
+    </header>
+
+    <main id="main">
+
+      <!-- Header du photographe : infos + bouton contact + portrait -->
+      <section class="photograph-header">
+        <div class="photograph-info">
+          <h1 class="photograph-name"></h1>
+          <p class="photograph-location"></p>
+          <p class="photograph-tagline"></p>
+        </div>
+        <button class="contact_button" aria-label="Contactez-moi" onclick="displayModal()">Contactez-moi</button>
+        <img class="photograph-portrait" src="" alt="" />
+      </section>
+
+      <!-- Contrôle de tri -->
+      <div class="sort-section">
+        <label id="sort-label">Trier par</label>
+        <div class="custom-select" id="custom-sort">
+          <button
+            class="custom-select-button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            aria-labelledby="sort-label sort-selected">
+            <span id="sort-selected">Popularité</span>
+            <span class="custom-select-arrow" aria-hidden="true">&#8964;</span>
+          </button>
+          <ul class="custom-select-list" id="sort-list" role="listbox" aria-labelledby="sort-label">
+            <li role="option" data-value="popularity" aria-selected="true" tabindex="-1">Popularité</li>
+            <li role="option" data-value="date" aria-selected="false" tabindex="-1">Date</li>
+            <li role="option" data-value="title" aria-selected="false" tabindex="-1">Titre</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Galerie des médias du photographe -->
+      <section class="photograph-gallery" aria-label="Galerie photos"></section>
+
+      <!-- Footer sticky : total likes + prix/jour -->
+      <div class="sticky-footer">
+        <span class="total-likes" aria-live="polite"></span>
+        <span class="likes-icon" aria-label="likes">♥</span>
+        <span class="price-per-day"></span>
+      </div>
+
+    </main>
+
+    <!-- Modale de contact -->
+    <div id="contact_modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal">
+        <header>
+          <h2 id="modal-title" class="modal-photographer-name">Contactez-moi</h2>
+          <button onclick="closeModal()" aria-label="Fermer le formulaire de contact">
+            <img src="assets/icons/close.svg" alt="" />
+          </button>
+        </header>
+        <form id="contact-form">
+          <div>
+            <label for="firstname">Prénom</label>
+            <input id="firstname" type="text" required />
+          </div>
+          <div>
+            <label for="lastname">Nom</label>
+            <input id="lastname" type="text" required />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" type="email" required />
+          </div>
+          <div>
+            <label for="message">Votre message</label>
+            <textarea id="message" required></textarea>
+          </div>
+          <button type="submit" class="contact_button">Envoyer</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" role="dialog" aria-label="image closeup view" aria-modal="true" aria-hidden="true">
+      <button class="lightbox-close" aria-label="Close dialog">
+        <img src="assets/icons/close.svg" alt="" />
+      </button>
+      <button class="lightbox-prev" aria-label="Previous image">&#8249;</button>
+      <div class="lightbox-content">
+        <div class="lightbox-media"></div>
+        <p class="lightbox-title"></p>
+      </div>
+      <button class="lightbox-next" aria-label="Next image">&#8250;</button>
+    </div>
+
+    <script src="scripts/factories/mediaFactory.js"></script>
+    <script src="scripts/utils/lightbox.js"></script>
+    <script src="scripts/pages/photographer.js"></script>
+    <script src="scripts/utils/customSelect.js"></script>
+    <script src="scripts/utils/contactForm.js"></script>
+  </body>
+</html>
